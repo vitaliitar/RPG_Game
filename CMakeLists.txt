@@ -20,7 +20,7 @@ file(GLOB Sources
 	Source/*.hpp
 	Source/*.cxx)
 
-add_executable(${PROJECT_NAME} ${Sources})
+add_executable(${PROJECT_NAME} ${Sources} Source/Game.cxx)
 # target_link_libraries(${PROJECT_NAME} ${ALL_LIBS})
 
 # Xcode and Visual working directories
