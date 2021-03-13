@@ -1,17 +1,19 @@
 #include <iostream>
 
 #include "game.hpp"
+#include "game_loop.hpp"
+#include "main_state.hpp"
 
 // Entry point
-int main()
-{
-    Game* game = Game::shared();
+int main() {
 
-    game->initialize();
+    GameLoop game_loop{10};
 
-    game->run_loop();
+    Game* game = new Game();
 
-    game->shutdown();
+    game->push_state(std::make_unique<MainState>());
+
+    game->render(game_loop);
 
 	return 0;
 }

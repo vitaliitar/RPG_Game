@@ -1,36 +1,36 @@
 #include <iostream>
 #include "game.hpp"
 
-Game* Game::m_instance = nullptr;
+Game::Game(): m_is_running(true) {}
 
-Game* Game::shared() {
-    if (m_instance == nullptr) {
-        m_instance = new Game();
+Game::~Game() {
+    while (!m_states.empty()) {
+        pop_state();
+    }
+}
+
+void Game::push_state(std::unique_ptr<GameState> state) {
+    state->set_game(this);
+
+    m_states.push(std::move(state));
+}
+
+GameState* Game::peek_state() {
+    if (m_states.empty()) {
+        throw std::range_error("Game::pop_state removed the last one");
     }
 
-    return m_instance;
+    return m_states.top().get();
 }
 
-bool Game::initialize() {
-    std::cout << "Initialize game\n";
-
-    return true;
+void Game::pop_state() {
+    m_states.pop();
 }
 
-bool Game::run_loop() {
-    m_is_running = true;
-
-    while (m_is_running) {
-        std::cout << "Running game\n";
-
-        // temp
-        m_is_running = false;
-    }
-
-    return false;
-
+bool Game::is_running() const {
+    return m_is_running;
 }
 
-void Game::shutdown() {
-    m_is_running = false;
+bool Game::render(GameLoop &game_loop) {
+    return game_loop.execute(this);
 }

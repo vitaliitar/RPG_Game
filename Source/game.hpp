@@ -4,20 +4,35 @@
 #ifndef _GAME_HPP_
 #define _GAME_HPP_
 
+#include <memory>
+#include <stack>
+#include "game_state.hpp"
+#include "game_loop.hpp"
+
+class GameState;
+class GameLoop;
+
 class Game final {
 public:
-    static Game* shared();
+    Game();
 
-    bool initialize();
+    Game(const Game&) = default;
+    Game& operator=(const Game&) = delete;
 
-    bool run_loop();
+    virtual ~Game();
 
-    void shutdown();
+    void push_state(std::unique_ptr<GameState> state);
+
+    void pop_state();
+
+    bool render(GameLoop& game_loop);
+
+    GameState* peek_state();
+
+    bool is_running() const;
 
 private:
-
-    static Game* m_instance;
-    Game() = default;
+    std::stack<std::unique_ptr<GameState>> m_states;
 
     bool m_is_running;
 
