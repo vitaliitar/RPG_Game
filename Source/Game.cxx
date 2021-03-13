@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Game.hpp"
 
+Game* Game::mInstance = nullptr;
+
 Game* Game::Shared() {
     if (mInstance == nullptr) {
         mInstance = new Game();
@@ -9,8 +11,6 @@ Game* Game::Shared() {
     return mInstance;
 }
 
-Game::Game() {}
-
 bool Game::Initialize() {
     std::cout << "Initialize game\n";
 
@@ -18,9 +18,17 @@ bool Game::Initialize() {
 }
 
 void Game::RunLoop() {
-    return;
+    mIsRunning = true;
+
+    while (mIsRunning) {
+        std::cout << "Running game\n";
+
+        // temp
+        mIsRunning = false;
+    }
+
 }
 
 void Game::Shutdown() {
-    return;
+    mIsRunning = false;
 }

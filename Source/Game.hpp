@@ -15,8 +15,9 @@ public:
     void Shutdown();
 
 private:
-    Game();
+
     static Game* mInstance;
+    Game() = default;
 
     bool mIsRunning;
 

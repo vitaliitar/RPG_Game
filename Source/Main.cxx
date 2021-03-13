@@ -5,12 +5,13 @@
 // Entry point
 int main()
 {
+    Game* game = Game::Shared();
 
-    // load entity
+    game->Initialize();
 
-    Game* g = Game::Shared();
+    game->RunLoop();
 
-    g->Initialize();
+    game->Shutdown();
 
 	return 0;
 }
