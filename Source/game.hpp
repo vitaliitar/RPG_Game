@@ -17,7 +17,6 @@ public:
     Game();
 
     Game(const Game&) = default;
-    Game& operator=(const Game&) = delete;
 
     virtual ~Game();
 

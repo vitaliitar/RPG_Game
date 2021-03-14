@@ -1,7 +1,7 @@
 #include <iostream>
 #include "game_loop.hpp"
 
-GameLoop::GameLoop(std::size_t frame_duration): m_frame_duration(frame_duration) {}
+GameLoop::GameLoop(int frame_duration): m_frame_duration(frame_duration) {}
 
 bool GameLoop::execute(Game *game) const {
     while (game->is_running()) {

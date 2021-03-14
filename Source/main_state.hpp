@@ -1,3 +1,6 @@
+
+#pragma once
+
 #ifndef MAIN_STATE_HPP
 #define MAIN_STATE_HPP
 
