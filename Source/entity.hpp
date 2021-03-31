@@ -9,6 +9,7 @@
 struct Stats {
     std::string m_id;
     std::string m_name;
+    int points;
     int m_max_hp;
     int m_hp;
     int m_attack_power;

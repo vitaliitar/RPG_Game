@@ -4,7 +4,7 @@
 #ifndef BATTLE_STATE_HPP
 #define BATTLE_STATE_HPP
 
-#include "game_state.hpp"
+#include "../game/game_state.hpp"
 
 class BattleState: public GameState {
 public:
