@@ -1,16 +1,9 @@
 #include "entity.hpp"
 
-Entity::Entity(const std::string id, std::string name, int hp, int max_hp, int attack_power, int defense_power)
-: m_id(id) {
-    this->m_name = name;
-    this->m_hp = hp;
-    this->m_max_hp = max_hp;
-    this->m_attack_power = attack_power;
-    this->m_defense_power = defense_power;
+Entity::Entity(Stats stats) {
+    this->m_stats = stats;
 }
 
 void Entity::attack(Entity *target) {
-
-    target->m_hp -= m_attack_power;
-
+    target->m_stats.m_hp -= m_stats.m_attack_power;
 }

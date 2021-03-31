@@ -13,20 +13,17 @@ int main() {
 
     Game* game = new Game();
 
-//    game->push_state(std::make_unique<MainState>());
+    game->push_state(std::make_unique<MainState>());
 
     game->push_state(std::make_unique<BattleState>());
 
     const auto battle_state = game->peek_state();
 
-    Entity* armando = new Entity("2a", "Armando", 50, 100, 20, 30);
+    Entity* armando = new Entity({"2a", "Armando", 50, 100, 20, 30});
 
-    Entity* callan = new Entity("2b", "Callan", 70, 100, 50, 30);
+    Entity* callan = new Entity({"2b", "Callan", 70, 100, 50, 30});
 
     armando->attack(callan);
-
-    std::cout << callan->m_hp;
-
 
     game->render(game_loop);
 
