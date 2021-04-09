@@ -19,6 +19,8 @@ add_definitions(
 file(GLOB Sources
     Source/skill_tree/*.hpp
     Source/skill_tree/*.cxx
+    Source/skill_tree/commands/*.cxx
+    Source/skill_tree/commands/*.hpp
     Source/game/*.hpp
     Source/game/*.cxx
     Source/states/*.hpp

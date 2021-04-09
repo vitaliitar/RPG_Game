@@ -4,9 +4,13 @@
 #ifndef SKILL_TREE_HPP
 #define SKILL_TREE_HPP
 
+enum SkillTypes {
+    HELLFIRE, SHIELDMANA, SLASH, VENOMOUSARROW, SHARPENBLADES
+};
+
 struct Skill {
     int id;
-    std::string name;
+    SkillTypes name;
     bool is_available;
     int min_level_required;
     int needed_points;

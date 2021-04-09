@@ -46,7 +46,7 @@ void SkillTree::print_skills() {
 std::string SkillTree::print_subtree(SkillNode *node) {
     std::string leftStr = (node->left == nullptr) ? "{}" : print_subtree(node->left);
     std::string rightStr = (node->right == nullptr) ? "{}" : print_subtree(node->right);
-    std::string result = "{" + node->skill.name + ", " + leftStr + ", " + rightStr + "}";
+    std::string result = "{" + std::to_string(node->skill.name) + ", " + leftStr + ", " + rightStr + "}";
 
     return result;
 }
