@@ -44,6 +44,9 @@ int main() {
     Combat combat;
     Hellfire hellfire(&combat);
 
+    SkillManager skill_manager;
+
+    skill_manager.apply(&hellfire);
 
 	return 0;
 }
