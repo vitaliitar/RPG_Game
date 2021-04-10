@@ -25,6 +25,8 @@ file(GLOB Sources
     Source/game/*.cxx
     Source/states/*.hpp
     Source/states/*.cxx
+    Source/dialogue/*.cxx
+    Source/dialogue/*.hpp
 	Source/*.hpp
 	Source/*.cxx)
 
