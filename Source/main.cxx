@@ -9,6 +9,7 @@
 #include "skill_tree/skill_command_manager.hpp"
 #include "skill_tree/combat.hpp"
 #include "skill_tree/commands/hellfire_command.hpp"
+#include "dialogue/dialogue.hpp"
 
 // Entry point
 int main() {
@@ -47,6 +48,13 @@ int main() {
     SkillManager skill_manager;
 
     skill_manager.apply(&hellfire);
+
+    Dialogue dialogue("Choose what do you want", {"Play cards", "Watch movies"});
+
+    int choice = dialogue.activate();
+
+    dialogue.make_choice(choice);
+
 
 	return 0;
 }
