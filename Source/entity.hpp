@@ -6,23 +6,24 @@
 
 #include <string>
 
+struct Stats {
+    std::string m_id;
+    std::string m_name;
+    int points;
+    int m_max_hp;
+    int m_hp;
+    int m_attack_power;
+    int m_defense_power;
+};
+
 class Entity {
 public:
-
-    // TODO replace for struct
-    Entity(std::string id, std::string name, int hp, int max_hp, int attack_power, int defense_power);
+    Entity(Stats stats);
 
     void attack(Entity* target);
 
 private:
-    const std::string m_id;
-    std::string m_name;
-    int m_max_hp;
-    int m_hp;
-
-    int m_attack_power, m_defense_power;
-
-
+    Stats m_stats;
 };
 
 #endif // ENTITY_HPP

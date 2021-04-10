@@ -4,7 +4,7 @@
 #ifndef MAIN_STATE_HPP
 #define MAIN_STATE_HPP
 
-#include "game_state.hpp"
+#include "../game/game_state.hpp"
 
 class MainState: public GameState {
 public:
