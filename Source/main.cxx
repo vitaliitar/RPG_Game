@@ -4,12 +4,13 @@
 #include "game/game_loop.hpp"
 #include "states/main_state.hpp"
 #include "states/battle_state.hpp"
-#include "entity.hpp"
+#include "entity/entity.hpp"
 #include "skill_tree/skill_tree.hpp"
 #include "skill_tree/skill_command_manager.hpp"
 #include "skill_tree/combat.hpp"
 #include "skill_tree/commands/hellfire_command.hpp"
 #include "dialogue/dialogue.hpp"
+#include "entity/player.hpp"
 
 // Entry point
 int main() {
@@ -24,11 +25,11 @@ int main() {
 //
 //    const auto battle_state = game->peek_state();
 //
-//    Entity* armando = new Entity({"2a", "Armando", 20, 50, 100, 20, 30});
+    Entity* armando = new Player({"2a", "Armando", 20, 50, 100, 20, 30});
 //
-//    Entity* callan = new Entity({"2b", "Callan", 30, 70, 100, 50, 30});
+    Entity* callan = new Player({"2b", "Callan", 30, 70, 100, 50, 30});
 //
-//    armando->attack(callan);
+    armando->attack(callan);
 //
 //    game->render(game_loop);
 

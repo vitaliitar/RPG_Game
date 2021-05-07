@@ -5,6 +5,10 @@
 #define ENTITY_HPP
 
 #include <string>
+#include <map>
+
+#include "../inventory/inventory.hpp"
+#include "../inventory/item.hpp"
 
 struct Stats {
     std::string m_id;
@@ -16,14 +20,18 @@ struct Stats {
     int m_defense_power;
 };
 
-class Entity {
+class Entity : public Inventory {
 public:
     Entity(Stats stats);
 
     void attack(Entity* target);
 
-private:
+    virtual std::multimap<std::string, Item*>& items();
+    virtual const std::multimap<std::string, Item*>& items() const;
+
+protected:
     Stats m_stats;
+    std::multimap<std::string, Item*> m_items;
 };
 
 #endif // ENTITY_HPP

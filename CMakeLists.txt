@@ -27,6 +27,10 @@ file(GLOB Sources
     Source/states/*.cxx
     Source/dialogue/*.cxx
     Source/dialogue/*.hpp
+    Source/entity/*.hpp
+    Source/entity/*.cxx
+    Source/inventory/*.hpp
+    Source/inventory/*.cxx
 	Source/*.hpp
 	Source/*.cxx)
 
