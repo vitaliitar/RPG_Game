@@ -1,4 +1,6 @@
 #include <iostream>
+#include <list>
+#include <ctime>
 
 #include "game/game.hpp"
 #include "game/game_loop.hpp"
@@ -11,9 +13,41 @@
 #include "skill_tree/commands/hellfire_command.hpp"
 #include "dialogue/dialogue.hpp"
 #include "entity/player.hpp"
+#include "inventory/item_manager.hpp"
+#include "inventory/nodes/selector_node.hpp"
+#include "inventory/nodes/sequence_node.hpp"
+#include "inventory/action.hpp"
 
 // Entry point
 int main() {
+
+    std::srand(std::time(nullptr));
+    ItemManager itemManager;
+    Selector selector[3];
+    Sequence sequence[4];
+    Action belhavenBlade ("Belhaven Blade", 99), aerondight ("Aerondight", 15),
+            bloodsword ("Bloodsword", 25), gesheft ("Gesheft", 99), viperswords ("Viperswords", 60),
+            manticoreswords ("manticoreswords", 60), assassinboots ("Assassin's boots", 100), bountyhunter ("bountyhunter", 99),
+            cavalrygauntlets ("Cavalry gauntlets", 70), condottiereboots ("Condottiere boots", 65),
+            enhancedUrsine ("enhancedUrsine after unlocking it", 85), magDeiracuirass ("magDeiracuirass", 95),
+            legendaryWolvenarmor ("legendaryWolvenarmor", 85), superiorFelineboots ("superiorFelineboots", 100);
+
+    itemManager.setRootChild (&selector[0]);
+    selector[0].add_children ({&sequence[0],&sequence[2]});
+    sequence[0].add_children ({&belhavenBlade, &selector[1], &manticoreswords, &assassinboots});
+    selector[1].add_children ({&aerondight, &sequence[1], &viperswords});
+    sequence[1].add_children ({&bloodsword, &gesheft});
+    sequence[2].add_children ({&bountyhunter, &selector[2], &legendaryWolvenarmor, &superiorFelineboots});
+    const std::list<Node*> nodes = {&cavalrygauntlets, &sequence[3], &magDeiracuirass};
+//    selector[2].add_children(nodes);
+    sequence[3].add_children ({&condottiereboots, &enhancedUrsine});
+
+    if (itemManager.run())
+        std::cout << "Congratulations!" << std::endl;
+    else
+        std::cout << "Sorry." << std::endl;
+
+    /*
 
     GameLoop game_loop{10};
 
@@ -55,6 +89,7 @@ int main() {
     int choice = dialogue.activate();
 
     dialogue.make_choice(choice);
+     */
 
 
 	return 0;

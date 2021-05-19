@@ -31,6 +31,8 @@ file(GLOB Sources
     Source/entity/*.cxx
     Source/inventory/*.hpp
     Source/inventory/*.cxx
+    Source/inventory/nodes/*.hpp
+    Source/inventory/nodes/*.cxx
 	Source/*.hpp
 	Source/*.cxx)
 
